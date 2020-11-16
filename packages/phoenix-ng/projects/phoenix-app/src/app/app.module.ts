@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GeometryComponent } from './sections/geometry/geometry.component';
 import { AtlasComponent } from './sections/atlas/atlas.component';
+import { FaserComponent } from './sections/faser/faser.component';
 import { LHCbComponent } from './sections/lhcb/lhcb.component';
 import { CMSComponent } from './sections/cms/cms.component';
 import { TrackmlComponent } from './sections/trackml/trackml.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'geometry', component: GeometryComponent },
   { path: 'atlas', component: AtlasComponent },
+  { path: 'faser', component: FaserComponent },	
   { path: 'lhcb', component: LHCbComponent },
   { path: 'cms', component: CMSComponent },
   { path: 'trackml', component: TrackmlComponent },
@@ -31,6 +33,7 @@ const routes: Routes = [
     HomeComponent,
     GeometryComponent,
     AtlasComponent,
+    FaserComponent,
     LHCbComponent,
     CMSComponent,
     TrackmlComponent,
