@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventDisplayService } from 'phoenix-ui-components';
+//import { Configuration, PresetView, PhoenixMenuNode, FaserLoader } from 'phoenix-event-display';
 import { Configuration, PresetView, PhoenixMenuNode, PhoenixLoader } from 'phoenix-event-display';
 
 @Component({
@@ -16,6 +17,7 @@ export class FaserComponent implements OnInit {
     // Define the configuration
     const configuration: Configuration = {
       eventDataLoader: new PhoenixLoader(),
+      //eventDataLoader: new FaserLoader(),
       presetViews: [
         new PresetView('Left View', [0, 0, -12000], 'left-cube'),
         new PresetView('Center View', [-500, 12000, 0], 'top-cube'),
@@ -44,10 +46,12 @@ export class FaserComponent implements OnInit {
 
     // Load detector geometries
     this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/PHOENIX_Calorimeter_v1.obj', 'Calorimeter', 0x8c8c8c, false);
+      .loadOBJGeometry('assets/geometry/FASER/Calorimeter_v2.obj', 'Calorimeter', 0x8c8c8c, false);
     this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/PHOENIX_PreShowerStation_v1.obj', 'Preshower', 0x356aa5, false);
+      .loadOBJGeometry('assets/geometry/FASER/PreShowerStation_v3.obj', 'Preshower', 0x356aa5, false);
     this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/PHOENIX_TimingStation_v1.obj', 'Timing', 0xfff400, false);
+      .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0xfff400, false);
+    this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0xc14343, false);
   }
 }

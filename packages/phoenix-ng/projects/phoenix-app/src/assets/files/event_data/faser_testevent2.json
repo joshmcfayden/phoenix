@@ -1,0 +1,88 @@
+{
+  "Event with Jets, Hits, Calorimeter Clusters, Tracks and Muons": {
+    "event number": 234,
+    "run number": 234,
+    "Hits": {
+       "Origin": [
+        [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+	]
+       ],
+	
+       "PreshowerTrigger1": [
+        [
+          [
+            -1463.0,
+            0.0,
+            0.0
+          ],
+          [
+            -1463.0,
+            3.0,
+            0.0
+          ],
+          [
+            -1463.0,
+            0.0,
+            3.0
+          ],
+          [
+            -1463.0,
+            -3.0,
+            0.0
+          ],
+          [
+            -1463.0,
+            0.0,
+            -3.0
+          ],
+          [
+            -1463.0,
+            3.0,
+            3.0
+          ],
+          [
+            -1463.0,
+            -3.0,
+            3.0
+          ],
+          [
+            -1463.0,
+            -3.0,
+            3.0
+          ],
+          [
+            -1463.0,
+            -3.0,
+            -3.0
+          ]
+        ]
+      ]
+    },
+    "CaloClusters": {
+      "CaloCalTopoClusters": [
+        {
+          "phi": 3.1,
+          "eta": 0,
+          "energy": 500000.0
+        }
+      ]
+    }
+  },
+  "Event with Jets": {
+    "Jets": {
+      "AntiKt4EMTopoJets": [
+        {
+          "coneR": 0.4,
+          "phi": 1.56555,
+          "eta": -0.121234,
+          "energy": 5943.56
+        }
+      ]
+    }
+  }
+}
