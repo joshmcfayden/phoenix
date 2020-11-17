@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventDisplayService } from 'phoenix-ui-components';
-//import { Configuration, PresetView, PhoenixMenuNode, FaserLoader } from 'phoenix-event-display';
-import { Configuration, PresetView, PhoenixMenuNode, PhoenixLoader } from 'phoenix-event-display';
+import { Configuration, PresetView, PhoenixMenuNode, FaserLoader } from 'phoenix-event-display';
+//import { Configuration, PresetView, PhoenixMenuNode, PhoenixLoader } from 'phoenix-event-display';
 
 @Component({
   selector: 'app-faser',
@@ -16,8 +16,8 @@ export class FaserComponent implements OnInit {
   ngOnInit() {
     // Define the configuration
     const configuration: Configuration = {
-      eventDataLoader: new PhoenixLoader(),
-      //eventDataLoader: new FaserLoader(),
+      //eventDataLoader: new PhoenixLoader(),
+      eventDataLoader: new FaserLoader(),
       presetViews: [
         new PresetView('Left View', [0, 0, -12000], 'left-cube'),
         new PresetView('Center View', [-500, 12000, 0], 'top-cube'),
@@ -46,7 +46,7 @@ export class FaserComponent implements OnInit {
 
     // Load detector geometries
     this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/Calorimeter_v2.obj', 'Calorimeter', 0x8c8c8c, false);
+      .loadOBJGeometry('assets/geometry/FASER/Calorimeter_v4.obj', 'Calorimeter', 0x8c8c8c, false);
     this.eventDisplay
       .loadOBJGeometry('assets/geometry/FASER/PreShowerStation_v3.obj', 'Preshower', 0x356aa5, false);
     this.eventDisplay

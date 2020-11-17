@@ -39,10 +39,12 @@ export * from './loaders/jivexml-loader';
 export * from './loaders/jsroot-event-loader';
 export * from './loaders/lhcb-loader';
 export * from './loaders/phoenix-loader';
+export * from './loaders/faser-loader';
 export * from './loaders/script-loader';
 export * from './loaders/trackml-loader';
 export * from './loaders/objects/cms-objects';
 export * from './loaders/objects/phoenix-objects';
+export * from './loaders/objects/faser-objects';
 
 // Managers
 export * from './managers/state-manager';
