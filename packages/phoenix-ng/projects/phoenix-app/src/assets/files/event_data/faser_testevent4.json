@@ -1,0 +1,70 @@
+{
+  "Event with Jets, Hits, Calorimeter Clusters, Tracks and Muons": {
+    "event number": 234,
+    "run number": 234,
+    "Hits": {
+       "Origin": [
+        [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+	]
+       ],
+	
+       "TrackerPlane1": [
+        [
+          [
+            -1063.0,
+            0.0,
+            0.0
+          ],
+          [
+            -1063.0,
+            -3.0,
+            -3.0
+          ]
+        ]
+      ]
+    },
+    "CaloClusters": {
+      "CaloBottomLeft": [
+        {
+          "x": -1955.0,
+          "y": -25.0,
+          "z": 45.0
+        }
+      ]
+    },
+    "LargeScintHits": {
+      "ScintPreshower1": [
+        {
+          "x": -1470.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ],
+      "ScintPreshower2": [
+        {
+          "x": -1555.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ]
+
+    }
+  },
+  "Event with Jets": {
+    "Jets": {
+      "AntiKt4EMTopoJets": [
+        {
+          "coneR": 0.4,
+          "phi": 1.56555,
+          "eta": -0.121234,
+          "energy": 5943.56
+        }
+      ]
+    }
+  }
+}

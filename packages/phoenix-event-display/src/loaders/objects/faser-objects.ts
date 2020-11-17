@@ -222,10 +222,10 @@ s
    * @param clusterParams Parameters for the Cluster.
    * @returns Cluster object.
    */
-  public static getLargeScintHit(scintParams: any): Object3D {
+  public static getLargeScintHits(scintParams: any): Object3D {
     const length = 10;
     // geometry
-    const geometry = new BoxBufferGeometry(300, 300, length);
+    const geometry = new BoxBufferGeometry(280, 280, length);
     // material
     const material = new MeshPhongMaterial({ color: EVENT_DATA_TYPE_COLORS['CaloClusters'] });
     // object
