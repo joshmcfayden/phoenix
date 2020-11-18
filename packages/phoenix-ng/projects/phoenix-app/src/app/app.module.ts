@@ -16,24 +16,17 @@ import { PlaygroundComponent } from './sections/playground/playground.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
-let routes: Routes;
-
-if (environment?.singleEvent) {
-  routes = [
-    { path: '', component: AtlasComponent }
-  ];
-} else {
-  routes = [
-    { path: '', component: HomeComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'geometry', component: GeometryComponent },
-    { path: 'atlas', component: AtlasComponent },
-    { path: 'lhcb', component: LHCbComponent },
-    { path: 'cms', component: CMSComponent },
-    { path: 'trackml', component: TrackmlComponent },
-    { path: 'playground', component: PlaygroundComponent }
-  ];
-}
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'geometry', component: GeometryComponent },
+  { path: 'atlas', component: AtlasComponent },
+  { path: 'faser', component: FaserComponent },
+  { path: 'lhcb', component: LHCbComponent },
+  { path: 'cms', component: CMSComponent },
+  { path: 'trackml', component: TrackmlComponent },
+  { path: 'playground', component: PlaygroundComponent }
+];
 
 @NgModule({
   declarations: [

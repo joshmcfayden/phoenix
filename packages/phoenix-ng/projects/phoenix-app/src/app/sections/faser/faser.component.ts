@@ -16,7 +16,7 @@ export class FaserComponent implements OnInit {
 
   constructor(private eventDisplay: EventDisplayService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // Define the configuration
     const configuration: Configuration = {
       //eventDataLoader: new PhoenixLoader(),
@@ -48,22 +48,22 @@ export class FaserComponent implements OnInit {
     //   });
 
     // Load detector geometries
-    this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/Calorimeter_v4.obj', 'Calorimeter', 0x8c8c8c, false);
-    this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/PreShowerStation_v3.obj', 'Preshower', 0x356aa5, false);
-    this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0x5f04b4, false);
-    this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0xc14343, false);
-  
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/Calorimeter_v4.obj', 'Calorimeter', 0x8c8c8c, undefined, false);
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/PreShowerStation_v3.obj', 'Preshower', 0x356aa5, undefined, false);
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0x5f04b4, undefined, false);
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0xc14343, undefined, false);
+
 
     // load the state from the imported JSON file
     const stateManager = new StateManager();
     stateManager.loadStateFromJSON(phoenixMenuConfig);
 
   }
-  
+
 }
 
 
