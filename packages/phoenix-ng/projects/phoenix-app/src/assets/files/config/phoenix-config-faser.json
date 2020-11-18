@@ -30,7 +30,7 @@
 		     "nodeLevel":2,
 		     "toggleState":true,
 		     "childrenActive":false,
-		     "configs":[{"type":"color","label":"Color","color":"#356aa5"},
+		     "configs":[{"type":"color","label":"Color","color":"#5882FA"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
 		     "children":[]
 		 },
@@ -39,7 +39,7 @@
 		     "nodeLevel":2,
 		     "toggleState":true,
 		     "childrenActive":false,
-		     "configs":[{"type":"color","label":"Color","color":"#7401DF"},
+		     "configs":[{"type":"color","label":"Color","color":"#8258FA"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
 		     "children":[]
 		 },
@@ -48,7 +48,7 @@
 		     "nodeLevel":2,
 		     "toggleState":true,
 		     "childrenActive":false,
-		     "configs":[{"type":"color","label":"Color","color":"#DF01D7"},
+		     "configs":[{"type":"color","label":"Color","color":"#D358F7"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
 		     "children":[]
 		 }

@@ -31,17 +31,19 @@ export class FaserComponent implements OnInit {
       phoenixMenuRoot: this.phoenixMenuRoot,
       // Default event data to fallback to if none given in URL
       // Do not set if there should be no event loaded by default
-      //defaultEventFile: {
+      defaultEventFile: {
       //  eventFile: 'assets/files/JiveXML/JiveXML_336567_2327102923.xml',
       //  eventType: 'jivexml'
-      //}
+        eventFile: 'assets/files/event_data/faser_testevent6.json',
+        eventType: 'json'
+      }
     };
 
     // Initialize the event display
     this.eventDisplay.init(configuration);
 
-    // // Load the JSON file containing event data
-    // this.http.get('assets/files/event_data/fasereventdump2.json')
+    //// Load the JSON file containing event data
+    //this.http.get('assets/files/event_data/faser_testevent5.json')
     //   .subscribe((res: any) => {
     //     // Parse the JSON to extract events and their data
     //     this.eventDisplay.parsePhoenixEvents(res);

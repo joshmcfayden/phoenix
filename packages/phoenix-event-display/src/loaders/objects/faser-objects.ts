@@ -198,11 +198,26 @@ export class FaserObjects {
    * @returns Cluster object.
    */
   public static getCluster(clusterParams: any): Object3D {
-    const length = 510;
+
+    let objectColor = EVENT_DATA_TYPE_COLORS['CaloClusters'].getHex();
+    
+    let length = 115.0;
+    const trigger_threshold = 1000.0;
+    
+    if (clusterParams.energy) {
+        if (clusterParams.energy < trigger_threshold) { // scale by fraction of threshold
+            length = length * clusterParams.energy / trigger_threshold;    
+    	} else { // if over threshold set green
+            objectColor = 0x00ff40; 
+        }
+    } else {
+      objectColor = 0xD8D8D8;
+    }
+
     // geometry
-    const geometry = new BoxBufferGeometry(115, 115, length);
+    const geometry = new BoxBufferGeometry(length, length, 510);
     // material
-    const material = new MeshPhongMaterial({ color: EVENT_DATA_TYPE_COLORS['CaloClusters'] });
+    const material = new MeshPhongMaterial({ color: objectColor });
     // object
     const cube = new Mesh(geometry, material);
     cube.position.x = clusterParams.x;
@@ -229,9 +244,22 @@ export class FaserObjects {
       objectColor = parseInt(largeScintParams.color, 16);
     }
 
-    const length = 10;
+    let length = 260.0;
+    const trigger_threshold = 1000.0;
+    
+    if (largeScintParams.energy) {
+        if (largeScintParams.energy < trigger_threshold) { // scale by fraction of threshold
+            length = length * largeScintParams.energy / trigger_threshold;    
+    	} else { // if over threshold set green
+            objectColor = 0x00ff40; 
+        }
+    } else {
+      objectColor = 0xD8D8D8;
+    }
+
+    
     // geometry
-    const geometry = new BoxBufferGeometry(260, 260, length);
+    const geometry = new BoxBufferGeometry(length, length, 10);
     // material
     const material = new MeshPhongMaterial({ color: objectColor });
     // object
@@ -260,9 +288,21 @@ export class FaserObjects {
       objectColor = parseInt(timingScintParams.color, 16);
     }
 
-    const length = 8;
+    let length = 400.0;
+    const trigger_threshold = 1000.0;
+    
+    if (timingScintParams.energy) {
+        if (timingScintParams.energy < trigger_threshold) { // if under threshold scale to fraction of threshold
+            length = length * timingScintParams.energy / trigger_threshold;    
+    	} else { // if over threshold set green
+            objectColor = 0x00ff40; 
+        }
+    } else {
+      objectColor = 0xD8D8D8;
+    }
+
     // geometry
-    const geometry = new BoxBufferGeometry(400, 150, length);
+    const geometry = new BoxBufferGeometry(length, length * 150.0/400., 8);
     // material
     const material = new MeshPhongMaterial({ color: objectColor });
     // object
