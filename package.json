@@ -9,9 +9,17 @@
     "release:major": "lerna publish major --git-remote upstream --create-release github",
     "release:minor": "lerna publish minor --git-remote upstream --create-release github",
     "release:pre": "lerna publish prerelease --conventional-prerelease",
-    "version": "git add ."
+    "version": "git add .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
-  }
+  },
+  "dependencies": {
+    "gh-pages": "^3.1.0",
+    "phoenix-event-display": "^1.1.0"
+  },
+  "homepage": "https://joshmcfayden.github.io/phoenix/"
 }
