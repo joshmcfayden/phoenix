@@ -168,6 +168,11 @@ export class FaserLoader implements EventDataLoader {
       this.addObjectType(eventData.LargeScintHits, FaserObjects.getLargeScintHits, 'LargeScintHits');
     }
 
+    if (eventData.TimingScintHits) {
+      // Cannot currently cut on just a postion array.
+      this.addObjectType(eventData.TimingScintHits, FaserObjects.getTimingScintHits, 'TimingScintHits');
+    }
+
     if (eventData.CaloClusters) {
       // (Optional) Cuts can be added to any physics object.
       const cuts = [

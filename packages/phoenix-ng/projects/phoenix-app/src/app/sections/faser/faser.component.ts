@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EventDisplayService } from 'phoenix-ui-components';
-import { Configuration, PresetView, PhoenixMenuNode, FaserLoader } from 'phoenix-event-display';
+import { Configuration, PresetView, PhoenixMenuNode, FaserLoader, StateManager } from 'phoenix-event-display';
 //import { Configuration, PresetView, PhoenixMenuNode, PhoenixLoader } from 'phoenix-event-display';
+
+// import the downloaded configuration from assets
+import phoenixMenuConfig from '../../../assets/files/config/phoenix-config-faser.json';
 
 @Component({
   selector: 'app-faser',
@@ -50,8 +53,18 @@ export class FaserComponent implements OnInit {
     this.eventDisplay
       .loadOBJGeometry('assets/geometry/FASER/PreShowerStation_v3.obj', 'Preshower', 0x356aa5, false);
     this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0xfff400, false);
+      .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0x5f04b4, false);
     this.eventDisplay
       .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0xc14343, false);
+  
+
+    // load the state from the imported JSON file
+    const stateManager = new StateManager();
+    stateManager.loadStateFromJSON(phoenixMenuConfig);
+
   }
+  
 }
+
+
+

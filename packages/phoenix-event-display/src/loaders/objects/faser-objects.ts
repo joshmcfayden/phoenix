@@ -67,7 +67,7 @@ export class FaserObjects {
 
     // attributes
     const curve = new CatmullRomCurve3(points);
-s
+
     // TubeGeometry
     const geometry = new TubeBufferGeometry(curve, undefined, 2);
     const material = new MeshToonMaterial({ color: objectColor });
@@ -222,22 +222,59 @@ s
    * @param clusterParams Parameters for the Cluster.
    * @returns Cluster object.
    */
-  public static getLargeScintHits(scintParams: any): Object3D {
+  public static getLargeScintHits(largeScintParams: any): Object3D {
+
+    let objectColor = EVENT_DATA_TYPE_COLORS['CaloClusters'].getHex();
+    if (largeScintParams.color) {
+      objectColor = parseInt(largeScintParams.color, 16);
+    }
+
     const length = 10;
     // geometry
-    const geometry = new BoxBufferGeometry(280, 280, length);
+    const geometry = new BoxBufferGeometry(260, 260, length);
     // material
-    const material = new MeshPhongMaterial({ color: EVENT_DATA_TYPE_COLORS['CaloClusters'] });
+    const material = new MeshPhongMaterial({ color: objectColor });
     // object
     const cube = new Mesh(geometry, material);
-    cube.position.x = scintParams.x;
-    cube.position.y = scintParams.y;
-    cube.position.z = scintParams.z;
-    cube.lookAt(new Vector3(0, scintParams.y, scintParams.z));
-    cube.userData = Object.assign({}, scintParams);
+    cube.position.x = largeScintParams.x;
+    cube.position.y = largeScintParams.y;
+    cube.position.z = largeScintParams.z;
+    cube.lookAt(new Vector3(0, largeScintParams.y, largeScintParams.z));
+    cube.userData = Object.assign({}, largeScintParams);
     cube.name = 'LargeScintHitCluster';
     // Setting uuid for selection from collections info
-    scintParams.uuid = cube.uuid;
+    largeScintParams.uuid = cube.uuid;
+
+    return cube;
+  }
+
+  /**
+   * Timing scintillator hit
+   * @param clusterParams Parameters for the Cluster.
+   * @returns Cluster object.
+   */
+  public static getTimingScintHits(timingScintParams: any): Object3D {
+
+    let objectColor = EVENT_DATA_TYPE_COLORS['CaloClusters'].getHex();
+    if (timingScintParams.color) {
+      objectColor = parseInt(timingScintParams.color, 16);
+    }
+
+    const length = 8;
+    // geometry
+    const geometry = new BoxBufferGeometry(400, 150, length);
+    // material
+    const material = new MeshPhongMaterial({ color: objectColor });
+    // object
+    const cube = new Mesh(geometry, material);
+    cube.position.x = timingScintParams.x;
+    cube.position.y = timingScintParams.y;
+    cube.position.z = timingScintParams.z;
+    cube.lookAt(new Vector3(0, timingScintParams.y, timingScintParams.z));
+    cube.userData = Object.assign({}, timingScintParams);
+    cube.name = 'TimingScintHitCluster';
+    // Setting uuid for selection from collections info
+    timingScintParams.uuid = cube.uuid;
 
     return cube;
   }
