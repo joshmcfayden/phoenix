@@ -1,0 +1,115 @@
+{
+  "Event with Hits, Calo Clusters and Scint Hits": {
+    "event number": 234,
+    "run number": 234,
+    "Hits": {
+       "Origin": [
+        [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+	]
+       ],
+	
+       "TrackerPlane1": [
+        [
+          [
+            -1063.0,
+            0.0,
+            0.0
+          ],
+          [
+            -1063.0,
+            -3.0,
+            -3.0
+          ]
+        ]
+      ]
+    },
+    "CaloClusters": {
+      "CaloBottomLeft": [
+        {
+          "x": -1955.0,
+          "y": -25.0,
+          "z": 45.0
+        }
+      ]
+    },
+    "LargeScintHits": {
+      "ScintPreshower1": [
+        {
+          "x": -1470.0,
+          "y": 40.0,
+          "z": 0.0,
+	  "color": "0xc14343"
+        }
+      ],
+      "ScintPreshower2": [
+        {
+          "x": -1555.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ],
+      "ScintVeto1": [
+        {
+          "x": 2970.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ],
+      "ScintVeto2": [
+        {
+          "x": 2950.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ],
+      "ScintVeto3": [
+        {
+          "x": 2770.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ],
+      "ScintVeto4": [
+        {
+          "x": 2750.0,
+          "y": 40.0,
+          "z": 0.0
+        }
+      ]	
+    },
+    "TimingScintHits": {
+      "ScintTimingTop": [
+        {
+          "x": 1184.0,
+          "y": 140.0,
+          "z": 0.0
+        }
+      ],
+      "ScintTimingBottom": [
+        {
+          "x": 1170.0,
+          "y": -50.0,
+          "z": 0.0,
+          "color": "0xc14343"
+        }
+      ]
+    }
+  },
+  "Event with Jets": {
+    "Jets": {
+      "AntiKt4EMTopoJets": [
+        {
+          "coneR": 0.4,
+          "phi": 1.56555,
+          "eta": -0.121234,
+          "energy": 5943.56
+        }
+      ]
+    }
+  }
+}

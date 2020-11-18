@@ -55,7 +55,7 @@ export class FaserComponent implements OnInit {
     await this.eventDisplay
       .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0x5f04b4, undefined, false);
     await this.eventDisplay
-      .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0xc14343, undefined, false);
+      .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0x04b431, undefined, false);
 
 
     // load the state from the imported JSON file
