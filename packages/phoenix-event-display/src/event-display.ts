@@ -171,14 +171,16 @@ export class EventDisplay {
    * @param filename Path to the geometry.
    * @param name Name given to the geometry.
    * @param color Color to initialize the geometry.
-   * @param doubleSided Renders both sides of the material.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
+   * @param doubleSided If true, render both sides of the material.
    * @param initiallyVisible Whether the geometry is initially visible or not.
+   * @param setFlat Whether object should be flat-shaded or not.
    */
   public loadOBJGeometry(filename: string, name: string, color: any,
-    doubleSided?: boolean, initiallyVisible: boolean = true) {
-    this.graphicsLibrary.loadOBJGeometry(filename, name, color, doubleSided, initiallyVisible);
-    this.ui.addGeometry(name, color, initiallyVisible);
+    menuNodeName?: string, doubleSided?: boolean, initiallyVisible: boolean = true, setFlat: boolean = true) {
+    this.ui.addGeometry(name, color, menuNodeName, initiallyVisible);
     this.infoLogger.add(name, 'Loaded OBJ geometry');
+    return this.graphicsLibrary.loadOBJGeometry(filename, name, color, doubleSided, initiallyVisible, setFlat);
   }
 
   /**
@@ -186,11 +188,13 @@ export class EventDisplay {
    * and adds it to the dat.GUI menu.
    * @param content Content of the OBJ geometry.
    * @param name Name given to the geometry.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
    * @param initiallyVisible Whether the geometry is initially visible or not.
    */
-  public parseOBJGeometry(content: string, name: string, initiallyVisible: boolean = true) {
+  public parseOBJGeometry(content: string, name: string,
+    menuNodeName?: string, initiallyVisible: boolean = true) {
     this.graphicsLibrary.parseOBJGeometry(content, name, initiallyVisible);
-    this.ui.addGeometry(name, 0x000fff, initiallyVisible);
+    this.ui.addGeometry(name, 0x000fff, menuNodeName, initiallyVisible);
   }
 
   /**
@@ -205,8 +209,9 @@ export class EventDisplay {
    * Parse and load an event from the Phoenix file format (.phnx).
    * @param input Content containing the JSON with event data
    * and other configuration.
+   * @returns Promise for loading the geometry.
    */
-  public parsePhoenixDisplay(input: any) {
+  public parsePhoenixDisplay(input: any): Promise<unknown> {
     const phoenixScene = JSON.parse(input);
 
     if (phoenixScene.sceneConfiguration && phoenixScene.scene) {
@@ -216,7 +221,7 @@ export class EventDisplay {
       this.graphicsLibrary.clearEventData();
       // Add to scene
       this.loadSceneConfiguration(phoenixScene.sceneConfiguration);
-      this.graphicsLibrary.parseGLTFGeometry(phoenixScene.scene);
+      return this.graphicsLibrary.parseGLTFGeometry(phoenixScene.scene);
     }
   }
 
@@ -241,29 +246,33 @@ export class EventDisplay {
    * and adds it to the dat.GUI menu.
    * @param url URL to the GLTF (.gltf) file.
    * @param name Name of the loaded scene/geometry.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
    * @param scale Scale of the geometry.
    * @param initiallyVisible Whether the geometry is initially visible or not.
+   * @returns Promise for loading the geometry.
    */
-  public loadGLTFGeometry(url: any, name: string,
-    scale?: number, initiallyVisible: boolean = true) {
-    this.graphicsLibrary.loadGLTFGeometry(url, name, scale, initiallyVisible);
-    this.ui.addGeometry(name, undefined, initiallyVisible);
+  public loadGLTFGeometry(url: any, name: string, menuNodeName?: string,
+    scale?: number, initiallyVisible: boolean = true): Promise<unknown> {
+    this.ui.addGeometry(name, undefined, menuNodeName, initiallyVisible);
     this.infoLogger.add(name, 'Loaded GLTF geometry');
+    return this.graphicsLibrary.loadGLTFGeometry(url, name, scale, initiallyVisible);
   }
 
   /**
    * Loads geometries from JSON.
    * @param json JSON or URL to JSON file of the geometry.
    * @param name Name of the geometry or group of geometries.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
    * @param scale Scale of the geometry.
    * @param doubleSided Renders both sides of the material.
    * @param initiallyVisible Whether the geometry is initially visible or not.
+   * @returns Promise for loading the geometry.
    */
-  public loadJSONGeometry(json: string | object, name: string,
-    scale?: number, doubleSided?: boolean, initiallyVisible: boolean = true) {
-    this.graphicsLibrary.loadJSONGeometry(json, name, scale, doubleSided, initiallyVisible);
-    this.ui.addGeometry(name, undefined, initiallyVisible);
+  public loadJSONGeometry(json: string | object, name: string, menuNodeName?: string,
+    scale?: number, doubleSided?: boolean, initiallyVisible: boolean = true): Promise<unknown> {
+    this.ui.addGeometry(name, undefined, menuNodeName, initiallyVisible);
     this.infoLogger.add(name, 'Loaded JSON geometry');
+    return this.graphicsLibrary.loadJSONGeometry(json, name, scale, doubleSided, initiallyVisible);
   }
 
   /**
@@ -271,15 +280,16 @@ export class EventDisplay {
    * @param JSROOT JSRoot object containing all the JSROOT functions.
    * @param url URL of the JSRoot geometry file.
    * @param name Name of the geometry.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
    * @param scale Scale of the geometry.
    * @param doubleSided Renders both sides of the material.
    * @param initiallyVisible Whether the geometry is initially visible or not.
    */
-  public loadRootJSONGeometry(JSROOT: any, url: string, name: string,
+  public loadRootJSONGeometry(JSROOT: any, url: string, name: string, menuNodeName?: string,
     scale?: number, doubleSided?: boolean, initiallyVisible: boolean = true) {
     JSROOT.NewHttpRequest(url, 'object', (obj: any) => {
       this.loadJSONGeometry(JSROOT.GEO.build(obj, { dflt_colors: true }).toJSON(),
-        name, scale, doubleSided, initiallyVisible);
+        name, menuNodeName, scale, doubleSided, initiallyVisible);
     }).send();
   }
 
@@ -289,17 +299,19 @@ export class EventDisplay {
    * @param url URL of the JSRoot file.
    * @param objectName Name of the object inside the ".root" file.
    * @param name Name of the geometry.
+   * @param menuNodeName Name of the node in Phoenix menu to add the geometry to.
    * @param scale Scale of the geometry.
    * @param doubleSided Renders both sides of the material.
    * @param initiallyVisible Whether the geometry is initially visible or not.
    */
   public loadRootGeometry(JSROOT: any, url: string, objectName: string,
-    name: string, scale?: number, doubleSided?: boolean, initiallyVisible: boolean = true) {
+    name: string, menuNodeName?: string, scale?: number, doubleSided?: boolean,
+    initiallyVisible: boolean = true) {
     if (url.indexOf('.root') > 0) {
       JSROOT.OpenFile(url, (file: any) => {
         file.ReadObject(objectName, (obj: any) => {
           this.loadJSONGeometry(JSROOT.GEO.build(obj, { dflt_colors: true }).toJSON(),
-            name, scale, doubleSided, initiallyVisible);
+            name, menuNodeName, scale, doubleSided, initiallyVisible);
         });
       });
     }
@@ -388,12 +400,13 @@ export class EventDisplay {
       loadGLTFGeometry: (sceneUrl: string, name: string) => {
         this.loadGLTFGeometry(sceneUrl, name);
       },
-      loadOBJGeometry: (filename: string, name: string, colour: any, doubleSided: boolean) => {
-        this.loadOBJGeometry(filename, name, colour, doubleSided);
+      loadOBJGeometry: (filename: string, name: string, colour: any,
+        menuNodeName: string, doubleSided: boolean) => {
+        this.loadOBJGeometry(filename, name, colour, menuNodeName, doubleSided);
       },
-      loadJSONGeometry: (json: string | object, name: string,
+      loadJSONGeometry: (json: string | object, name: string, menuNodeName: string,
         scale?: number, doubleSided?: boolean, initiallyVisible: boolean = true) => {
-        this.loadJSONGeometry(json, name, scale, doubleSided, initiallyVisible);
+        this.loadJSONGeometry(json, name, menuNodeName, scale, doubleSided, initiallyVisible);
       }
     };
   }
