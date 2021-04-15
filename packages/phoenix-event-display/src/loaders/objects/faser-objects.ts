@@ -14,6 +14,8 @@ export class FaserObjects {
    * @returns Track object.
    */
   public static getTrack(trackParams: any): Object3D {
+    console.log("DOING TRACKING")
+    console.log(trackParams)	
     let positions = trackParams.pos;
     // Track with no points
     // if (positions.length==0) {
@@ -23,7 +25,9 @@ export class FaserObjects {
 
     // Track with too few points are extrapolated with RungeKutta
     if (positions.length < 3) {
+       console.log("DOING TRACK EXTRAP WITH RK")
       if (trackParams?.dparams) {
+        console.log("TRACK Found dparams")
         // Test, for ATLAS. 
         // FIXME - make configurable
         let inBounds = function (pos: Vector3) {
@@ -35,11 +39,13 @@ export class FaserObjects {
           return true
         };
 
-        positions = RKHelper.extrapolateTrackPositions(trackParams, inBounds);
+	positions = RKHelper.extrapolateTrackPositions(trackParams, inBounds);
+	//  positions = RKHelper.extrapolateTrackPositions(trackParams, true);
       }
     }
     // Check again, in case there was an issue with the extrapolation.
     if (positions.length < 3) {
+      console.log("TOO FEW TRACK POSITIONS: "+positions.length)
       return;
     }
 
@@ -62,6 +68,7 @@ export class FaserObjects {
     const points = [];
 
     for (let i = 0; i < positions.length; i++) {
+      console.log("TRACK Position "+i)
       points.push(new Vector3(positions[i][0], positions[i][1], positions[i][2]));
     }
 
@@ -181,7 +188,7 @@ export class FaserObjects {
     geometry.setAttribute('position', new BufferAttribute(pointPos, 3));
     geometry.computeBoundingSphere();
     // material
-    const material = new PointsMaterial({ size: 100, color: EVENT_DATA_TYPE_COLORS['Hits'] });
+    const material = new PointsMaterial({ size: 30, color: EVENT_DATA_TYPE_COLORS['Hits'] });
     // object
     const pointsObj = new Points(geometry, material);
     pointsObj.userData = Object.assign({}, hitsParamsClone);
@@ -247,7 +254,7 @@ export class FaserObjects {
     let length = 260.0;
     const trigger_threshold = 1000.0;
     
-    if (largeScintParams.energy) {
+    if (largeScintParams.energy>0) {
         if (largeScintParams.energy < trigger_threshold) { // scale by fraction of threshold
             length = length * largeScintParams.energy / trigger_threshold;    
     	} else { // if over threshold set green

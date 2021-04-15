@@ -34,7 +34,9 @@ export class FaserComponent implements OnInit {
       defaultEventFile: {
       //  eventFile: 'assets/files/JiveXML/JiveXML_336567_2327102923.xml',
       //  eventType: 'jivexml'
-        eventFile: 'assets/files/event_data/faser_testevent6.json',
+      //  eventFile: 'assets/files/event_data/faser_testevent6.json',
+      //  eventType: 'json'
+        eventFile: 'assets/files/event_data/faser_realevent3.json',
         eventType: 'json'
       }
     };
@@ -58,6 +60,10 @@ export class FaserComponent implements OnInit {
       .loadOBJGeometry('assets/geometry/FASER/TimingStation_v8.obj', 'Timing', 0x5f04b4, undefined, false);
     await this.eventDisplay
       .loadOBJGeometry('assets/geometry/FASER/VetoStation_v3.obj', 'Veto', 0x04b431, undefined, false);
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/TrackerStations_v6.obj', 'Tracker', 0xcccc33, undefined, false);
+    await this.eventDisplay
+      .loadOBJGeometry('assets/geometry/FASER/Magnets_v5.obj', 'Magnets', 0xffffff, undefined, false);
 
 
     // load the state from the imported JSON file

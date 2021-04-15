@@ -21,7 +21,7 @@
 		     "nodeLevel":2,
 		     "toggleState":true,
 		     "childrenActive":false,
-		     "configs":[{"type":"color","label":"Color","color":"#8c8c8c"},
+		     "configs":[{"type":"color","label":"Color","color":"#084B8A"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
 		     "children":[]
 		 },
@@ -30,7 +30,7 @@
 		     "nodeLevel":2,
 		     "toggleState":true,
 		     "childrenActive":false,
-		     "configs":[{"type":"color","label":"Color","color":"#5882FA"},
+		     "configs":[{"type":"color","label":"Color","color":"#81BEF7"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
 		     "children":[]
 		 },
@@ -50,6 +50,24 @@
 		     "childrenActive":false,
 		     "configs":[{"type":"color","label":"Color","color":"#D358F7"},
 				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
+		     "children":[]
+		 },
+		 {
+		     "name":"Tracker",
+		     "nodeLevel":2,
+		     "toggleState":true,
+		     "childrenActive":false,
+		     "configs":[{"type":"color","label":"Color","color":"#cccc33"},
+				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true}],
+		     "children":[]
+		 },
+		 {
+		     "name":"Magnets",
+		     "nodeLevel":2,
+		     "toggleState":true,
+		     "childrenActive":false,
+		     "configs":[{"type":"color","label":"Color","color":"#ffffff"},
+				{"type":"slider","label":"Opacity","min":0,"max":1,"step":0.05,"allowCustomValue":true,"value":0.15}],
 		     "children":[]
 		 }
 	     ]
