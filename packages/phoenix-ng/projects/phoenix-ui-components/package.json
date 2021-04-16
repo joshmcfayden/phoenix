@@ -32,11 +32,20 @@
     "tslib": "^2.0.1"
   },
   "main": "dist/bundles/phoenix-ui-components.umd.js",
+  "module_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/phoenix-ui-components.js",
   "module": "dist/fesm2015/phoenix-ui-components.js",
+  "es2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/phoenix-ui-components.js",
   "es2015": "dist/fesm2015/phoenix-ui-components.js",
   "esm2015": "dist/esm2015/phoenix-ui-components.js",
+  "fesm2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/phoenix-ui-components.js",
   "fesm2015": "dist/fesm2015/phoenix-ui-components.js",
   "typings": "dist/phoenix-ui-components.d.ts",
   "metadata": "dist/phoenix-ui-components.metadata.json",
-  "sideEffects": false
+  "sideEffects": false,
+  "__processed_by_ivy_ngcc__": {
+    "es2015": "10.0.14",
+    "fesm2015": "10.0.14",
+    "module": "10.0.14",
+    "typings": "10.0.14"
+  }
 }
